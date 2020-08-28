@@ -15,7 +15,6 @@ public class CritService {
 
     public String getCsv() {
         List<Crit> all = critDao.findAll();
-        //all.get(0).toString();
         return "Demo String";
     }
 }
