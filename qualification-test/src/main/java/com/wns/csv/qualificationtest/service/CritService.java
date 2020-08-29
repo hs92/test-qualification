@@ -17,6 +17,10 @@ import java.util.stream.Collectors;
 @Service
 public class CritService {
 
+    private final String APPEND_DAY = "01";
+
+    private final String APPEND_TIMESTAMP = "01000000";
+
     private final String effectiveEndDate = "99991231";
 
     private final String effectiveEndDateTimeStamp = "99991231000000";
@@ -176,8 +180,8 @@ public class CritService {
         String result = dateFormat.format(previousDate);
         if (!CollectionUtils.isEmpty(dtoList)) {
             dtoList.forEach(dto-> {
-                dto.setEffectiveDate(result + "01");
-                dto.setChangeTimestamp(result + "01000000");
+                dto.setEffectiveDate(result + APPEND_DAY);
+                dto.setChangeTimestamp(result + APPEND_TIMESTAMP);
                 dto.setEffectiveEndDate(effectiveEndDate);
                 dto.setEndDateTimestamp(effectiveEndDateTimeStamp);
             });

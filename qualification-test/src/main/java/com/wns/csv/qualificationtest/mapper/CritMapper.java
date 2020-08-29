@@ -14,11 +14,6 @@ public class CritMapper {
 
         List<CritDto> critDtoList = new ArrayList<>(0);
         if (!CollectionUtils.isEmpty(critEntityList)) {
-//            critEntityList.forEach(crit -> {
-//                CritDto dto = new CritDto();
-//                BeanUtils.copyProperties(crit, dto);
-//                critDtoList.add(dto);
-//            });
             critDtoList = critEntityList.stream().map(critEntity -> new CritDto(critEntity.getId(), critEntity.getNvic(), critEntity.getVehcat(), null, null, null, null,
                     critEntity.getAmpacpt(), critEntity.getAamacpt(), critEntity.getApiacpt(), critEntity.getGioacpt(), critEntity.getSunacpt(), critEntity.getShnacpt(),
                     critEntity.getGiociacpt(), critEntity.getJciacpt(), critEntity.getBingleacpt(), critEntity.getEssacpt(), critEntity.getVo3acpt(), critEntity.getVo5acpt(),
