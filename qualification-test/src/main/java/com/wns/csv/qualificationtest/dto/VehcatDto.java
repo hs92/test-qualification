@@ -78,4 +78,8 @@ public class VehcatDto implements Serializable {
     public String getInternetJep() {
         return internetJep;
     }
+
+    public String getAddMod() {
+        return addMod;
+    }
 }
