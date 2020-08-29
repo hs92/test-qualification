@@ -54,4 +54,28 @@ public class VehcatDto implements Serializable {
     public String getCompany() {
         return company;
     }
+
+    public String getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public String getChangeTimestamp() {
+        return changeTimestamp;
+    }
+
+    public String getEffectiveEndDate() {
+        return effectiveEndDate;
+    }
+
+    public String getEndDateTimestamp() {
+        return endDateTimestamp;
+    }
+
+    public String getAcceptCrit() {
+        return acceptCrit;
+    }
+
+    public String getInternetJep() {
+        return internetJep;
+    }
 }

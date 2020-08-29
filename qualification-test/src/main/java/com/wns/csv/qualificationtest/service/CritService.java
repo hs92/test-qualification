@@ -45,6 +45,8 @@ public class CritService {
         finalCrtExt.addAll(bkVehcatList);
         setAddMod(finalCrtExt);
 
+        finalCrtExt = finalCrtExt.stream().filter(vehcatDto -> !("CI".equals(vehcatDto.getVehcat())
+                && vehcatDto.getNvic().startsWith("!"))).collect(Collectors.toList());
         finalCrtExt.sort(Comparator.comparing(VehcatDto::getVehcat)
                 .thenComparing(VehcatDto::getCompany)
                 .thenComparing(VehcatDto::getNvic));
@@ -54,9 +56,7 @@ public class CritService {
     private void setAddMod(List<VehcatDto> finalCrtExt) {
 
         if (!CollectionUtils.isEmpty(finalCrtExt)) {
-            finalCrtExt.forEach(vehcatDto -> {
-                vehcatDto.setAddMod("ADD");
-            });
+            finalCrtExt.forEach(vehcatDto -> vehcatDto.setAddMod("ADD"));
         }
     }
 
