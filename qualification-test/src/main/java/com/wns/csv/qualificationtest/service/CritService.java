@@ -28,7 +28,7 @@ public class CritService {
     @Resource
     private CritDao critDao;
 
-    public List<VehcatDto> finalCrtExt() {
+    public List<VehcatDto> getVehcatData() {
 
         List<Crit> critEntity = critDao.findAll();
         List<CritDto> dtoList = CritMapper.toDtoList(critEntity);

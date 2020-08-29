@@ -29,7 +29,7 @@ public class CritController {
     public ResponseEntity<?> exportToCsv() {
 
         try {
-            List<VehcatDto> finalCrtExt = critService.finalCrtExt();
+            List<VehcatDto> finalCrtExt = critService.getVehcatData();
             if (!CollectionUtils.isEmpty(finalCrtExt)) {
                 ByteArrayInputStream in = csvExporter.covertDataToCsv(finalCrtExt);
                 HttpHeaders headers = new HttpHeaders();
