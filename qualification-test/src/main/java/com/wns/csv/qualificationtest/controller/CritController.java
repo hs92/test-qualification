@@ -19,6 +19,6 @@ public class CritController {
     @GetMapping("/convert-to-csv")
     public ResponseEntity<?> getCsv() {
 
-        return new ResponseEntity<>(critService.getCsv(), HttpStatus.OK);
+        return new ResponseEntity<>(critService.finalCrtExt(), HttpStatus.OK);
     }
 }
