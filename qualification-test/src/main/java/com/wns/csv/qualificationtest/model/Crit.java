@@ -1,10 +1,19 @@
 package com.wns.csv.qualificationtest.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "MIGRATE_TEST")
 public class Crit {
@@ -95,120 +104,4 @@ public class Crit {
 
     @Column(name = "IMRRULE")
     private String imrRule;
-
-    public long getId() {
-        return id;
-    }
-
-    public String getNvic() {
-        return nvic;
-    }
-
-    public String getVehcat() {
-        return vehcat;
-    }
-
-    public String getAmpacpt() {
-        return ampacpt;
-    }
-
-    public String getAamacpt() {
-        return aamacpt;
-    }
-
-    public String getApiacpt() {
-        return apiacpt;
-    }
-
-    public String getGioacpt() {
-        return gioacpt;
-    }
-
-    public String getSunacpt() {
-        return sunacpt;
-    }
-
-    public String getShnacpt() {
-        return shnacpt;
-    }
-
-    public String getGiociacpt() {
-        return giociacpt;
-    }
-
-    public String getJciacpt() {
-        return jciacpt;
-    }
-
-    public String getBingleacpt() {
-        return bingleacpt;
-    }
-
-    public String getEssacpt() {
-        return essacpt;
-    }
-
-    public String getVo3acpt() {
-        return vo3acpt;
-    }
-
-    public String getVo5acpt() {
-        return vo5acpt;
-    }
-
-    public String getAamrule() {
-        return aamrule;
-    }
-
-    public String getAmprule() {
-        return amprule;
-    }
-
-    public String getApiRule() {
-        return apiRule;
-    }
-
-    public String getGioRule() {
-        return gioRule;
-    }
-
-    public String getSunRule() {
-        return sunRule;
-    }
-
-    public String getShnRule() {
-        return shnRule;
-    }
-
-    public String getEssRule() {
-        return essRule;
-    }
-
-    public String getVo3rule() {
-        return vo3rule;
-    }
-
-    public String getV05rule() {
-        return v05rule;
-    }
-
-    public String getJciRule() {
-        return jciRule;
-    }
-
-    public String getGiociRule() {
-        return giociRule;
-    }
-
-    public String getBingleRule() {
-        return bingleRule;
-    }
-
-    public String getImraCpt() {
-        return imraCpt;
-    }
-
-    public String getImrRule() {
-        return imrRule;
-    }
 }
