@@ -88,7 +88,7 @@ public class CritService {
                             bk.getEffectiveEndDate(), bk.getEndDateTimestamp(), "AMP", bk.getAmpacpt(), bk.getAmprule())).collect(Collectors.toList());
             List<VehcatDto> bkImrCompanyList = bkList.stream().filter(bk -> bk.getImraCpt() != null && bk.getImrRule() != null)
                     .map(bk -> new VehcatDto(null, bk.getNvic(), bk.getVehcat(), bk.getEffectiveDate(), bk.getChangeTimestamp(),
-                            bk.getEffectiveEndDate(), bk.getEndDateTimestamp(), "AMP", bk.getImraCpt(), bk.getImrRule())).collect(Collectors.toList());
+                            bk.getEffectiveEndDate(), bk.getEndDateTimestamp(), "IMR", bk.getImraCpt(), bk.getImrRule())).collect(Collectors.toList());
             bkVehcatList.addAll(bkAamiCompanyList);
             bkVehcatList.addAll(bkApiaCompanyList);
             bkVehcatList.addAll(bkSunCorpCompanyList);
