@@ -168,19 +168,16 @@ public class EnglishCalculator {
     public static void main(String[] args) {
 
         String input_1 = "add fifty three to forty four and then multiply by ten";
-        //getResult(input_1.trim().toLowerCase());
+        getResult(input_1.trim().toLowerCase());
 
         String input_2 = "divide ninety nine by eleven and then subtract four";
-       getResult(input_2.trim().toLowerCase());
+        getResult(input_2.trim().toLowerCase());
 
         String input_3 = "add seventy seven to fifty and then add two";
-        // getResult(input_3.trim().toLowerCase());
+        getResult(input_3.trim().toLowerCase());
 
         String input_4 = "subtract five from seventeen";
-        //getResult(input_4.trim().toLowerCase());
-
-        String input_5 = "add five to seventeen";
-        //getResult(input_5.trim().toLowerCase());
+        getResult(input_4.trim().toLowerCase());
     }
 
     private static void getResult(String str) {
@@ -188,29 +185,27 @@ public class EnglishCalculator {
         long res = 0;
         String[] split = str.split(AND_THEN);
         for (int i = 0; i < split.length; i++) {
-            boolean isLast = i == split.length - 1;
             String s = split[i];
             String operator = s.substring(0, s.indexOf(SPACE));
             switch (operator) {
                 case ADD:
-                    res = performAddition(s, isLast, i, res);
+                    res = performAddition(s, i, res);
                     break;
                 case SUBTRACT:
-                    res = performSubtraction(s, isLast, i, res);
+                    res = performSubtraction(s, i, res);
                     break;
                 case MULTIPLY:
-                    res = performMultiplication(s, isLast, i, res);
+                    res = performMultiplication(s, i, res);
                     break;
                 case DIVIDE:
-                    res = performDivision(s, isLast, i, res);
+                    res = performDivision(s, i, res);
                     break;
             }
-            System.out.println(operator + " " + isLast);
         }
         System.out.println(numberToWord(res));
     }
 
-    private static long performAddition(String s, boolean isLast, int i, long res) {
+    private static long performAddition(String s, int i, long res) {
 
         String operand1, operand2;
         long op1, op2;
@@ -221,23 +216,14 @@ public class EnglishCalculator {
             op2 = getNumber(operand2);
             res = op1 + op2;
         } else {
-            if (!isLast) {
-                operand1 = s.substring(s.indexOf(ADD), s.indexOf(to)).replaceAll(ADD, BLANK).trim();
-                op1 = getNumber(operand1);
-                System.out.println(operand1 + " " + op1);
-                res += op1;
-            }
-            operand2 = isLast ? s.substring(s.indexOf(ADD)).replaceAll(ADD, BLANK).trim() : s.substring(s.indexOf(to)).replaceAll(to, BLANK).trim();
+            operand2 = s.substring(s.indexOf(ADD)).replaceAll(ADD, BLANK).trim();
             op2 = getNumber(operand2);
-            // System.out.println(operand2 + " " + op2);
             res += op2;
-            System.out.println(operand2 + " " + op2 + " " + res);
         }
-
         return res;
     }
 
-    private static long performSubtraction(String s, boolean isLast, int i, long res) {
+    private static long performSubtraction(String s, int i, long res) {
 
         String operand1, operand2;
         long op1, op2;
@@ -248,21 +234,15 @@ public class EnglishCalculator {
             op2 = getNumber(operand2);
             res = op2 - op1;
         } else {
-            if (!isLast) {
-                operand1 = s.substring(s.indexOf(SUBTRACT), s.indexOf(from)).replaceAll(SUBTRACT, BLANK).trim();
-                op1 = getNumber(operand1);
-                System.out.println(operand1 + " " + op1);
-                res -= op1;
-            }
-            operand2 = isLast ? s.substring(s.indexOf(SUBTRACT)).replaceAll(SUBTRACT, BLANK).trim() : s.substring(s.indexOf(from)).replaceAll(from, BLANK).trim();
+            operand2 = s.substring(s.indexOf(SUBTRACT)).replaceAll(SUBTRACT, BLANK).trim();
             op2 = getNumber(operand2);
             res -= op2;
-            System.out.println(operand2 + " " + op2 + " " + res);
         }
         return res;
     }
 
-    private static long performMultiplication(String s, boolean isLast, int i, long res) {
+    private static long performMultiplication(String s, int i, long res) {
+
         String operand1, operand2;
         long op1, op2;
         if (i == 0) {
@@ -272,40 +252,28 @@ public class EnglishCalculator {
             op2 = getNumber(operand2);
             res = op1*op2;
         } else {
-            if (!isLast) {
-                operand1 = s.substring(s.indexOf(MULTIPLY), s.indexOf(by)).replaceAll(MULTIPLY, BLANK).trim();
-                op1 = getNumber(operand1);
-                res *= op1;
-                System.out.println(operand1 + " " + op1);
-            }
             operand2 = s.substring(s.indexOf(by)).replaceAll(by, BLANK).trim();
             op2 = getNumber(operand2);
             res = res*op2;
-            System.out.println(operand2 + " " + op2 + " " + res);
         }
-
         return res;
     }
 
-    private static long performDivision(String s, boolean isLast, int i, long res) {
+    private static long performDivision(String s, int i, long res) {
+
         String operand1, operand2;
         long op1, op2;
         if (i == 0) {
             operand1 = s.substring(s.indexOf(DIVIDE), s.indexOf(by)).replaceAll(DIVIDE, BLANK).trim();
             op1 = getNumber(operand1);
-            //System.out.println(operand1 + " " + op1);
             operand2 = s.substring(s.indexOf(by)).replaceAll(by, BLANK).trim();
             op2 = getNumber(operand2);
             res = op1/op2;
         } else {
-            operand1 = !isLast ? s.substring(s.indexOf(DIVIDE), s.indexOf(by)).replaceAll(DIVIDE, BLANK).trim() : "";
-            op1 = !isLast ? getNumber(operand1) : 1;
-            //System.out.println(operand1 + " " + op1);
             operand2 = s.substring(s.indexOf(by)).replaceAll(by, BLANK).trim();
             op2 = getNumber(operand2);
-            res = isLast ? res/op2 : op1/op2;
+            res = res/op2;
         }
-        //System.out.println(operand2 + " " + op2);
         return res;
     }
 }
